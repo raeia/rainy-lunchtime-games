@@ -1,0 +1,31 @@
+import random
+
+fighters = ["rock", "paper", "scissors"]
+def rock_paper_scissors():
+    gameplay = True
+    replay = ""
+    while gameplay is True:
+        fighter = input("Choose your fighter out of rock, paper, scissors: ")
+        against = fighters[random.randrange(0,3)]
+        if fighter in fighters:
+            print(against)
+            if fighter == against:
+                print("It's a tie!")
+            elif fighter == "rock" and against == "scissors":
+                print("You win!")
+            elif fighter == "paper" and against == "rock":
+                print("You win!")
+            elif fighter == "scissors" and against == "paper":
+                print("You win!")
+            else:
+                print("You lose!")
+        else:
+            print("Invalid input!")
+        replay = input("Play again? Y/N ")
+        if replay == "Y":
+            rock_paper_scissors()
+        else:
+            gameplay = False
+
+
+rock_paper_scissors()
