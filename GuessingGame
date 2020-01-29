@@ -1,0 +1,23 @@
+import random
+def guess_game():
+   guess_check = False
+   answer = random.randint(1, 20)
+   tries = 1
+   while guess_check is False:
+       response = (input("Enter a number: "))
+       try:
+           guess = int(response)
+       except ValueError:
+           print("This is not a valid integer. Please try again")
+           continue
+       if guess > answer:
+           print("Too high! Try again.")
+       elif guess < answer:
+           print("Too low! Try again.")
+       else:
+           print("Correct! It took you " + str(tries) + " tries!")
+           guess_check = True
+       tries += 1
+
+
+guess_game()
