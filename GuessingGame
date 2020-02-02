@@ -1,10 +1,11 @@
 import random
 def guess_game():
-   guess_check = False
-   answer = random.randint(1, 20)
+   replay = ""
+   guess_check = True
+   answer = random.randint(1, 25)
    tries = 1
-   while guess_check is False:
-       response = (input("Enter a number: "))
+   while guess_check is True:
+       response = (input("Enter a number between 1 and 25: "))
        try:
            guess = int(response)
        except ValueError:
@@ -16,7 +17,12 @@ def guess_game():
            print("Too low! Try again.")
        else:
            print("Correct! It took you " + str(tries) + " tries!")
-           guess_check = True
+           replay = input("Play again? Y/N ")
+           if replay == "Y":
+               guess_game()
+           else:
+               guess_check = False
+               break
        tries += 1
 
 
