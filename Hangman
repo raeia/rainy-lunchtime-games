@@ -1,7 +1,13 @@
 import random
-words = ["reliable", "hardworking", "creative", "friendly", "adaptable", "punctual", "responsible", "intelligent"]
+words = ["reliable", "creative", "friendly", "adaptable", "punctual", "success", "efficient", "smart", "diligent"]
 
 def hangman():
+    print("  |‾/‾‾‾|\n"
+          "  |/    O\n"
+          "  |    /|\\\n"
+          "  |    /\\\n"
+          "  |\n"
+          "__|__")
     guesses = 0
     gameplay = True
     answer = list(words[random.randint(0, len(words))])
@@ -11,25 +17,37 @@ def hangman():
     letter = ""
     for i in answer:
         display.append("_ ")
-    while guesses < 10:
-        letter = input("Guess a letter: ")
-        if letter.lower() in guessed:
-            print("Already guessed that letter!")
-        else:
-            for i in range(0, word_length):
-                if letter.lower() == answer[i]:
-                    display[i] = letter.lower()
+    while gameplay is True:
+        while guesses < 10:
+            letter = input("Guess a letter: ")
+            if letter.lower() in guessed:
+                print("Already guessed that letter!")
+            else:
+                for i in range(0, word_length):
+                    if letter.lower() == answer[i]:
+                        display[i] = letter.lower()
             guesses += 1
-        guessed.append(letter.lower())
-        print("".join(display))
+            guessed.append(letter.lower())
+            print("".join(display))
         if display == answer:
             print("You got it!")
-            gameplay = False
-    else:
-        result = ""
-        for char in answer:
-            result += char
-        print("Too bad! The word was '" + str(result) + "'!")
+            replay = input("Play again? Y/N ")
+            if replay == "Y":
+                hangman()
+            else:
+                gameplay = False
+                break
+        else:
+            result = "".join(answer)
+            print("Too bad! The word was '" + str(result) + "'!")
+            replay = input("Play again? Y/N ")
+            if replay == "Y":
+                hangman()
+            else:
+                gameplay = False
+                break
+
+
 
 
 hangman()
