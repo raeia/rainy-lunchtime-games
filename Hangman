@@ -46,6 +46,4 @@ def hangman():
             break
 
 
-
-
 hangman()
