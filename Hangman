@@ -18,7 +18,7 @@ def hangman():
     for i in answer:
         display.append("_ ")
     while gameplay is True:
-        while guesses < 10:
+        while guesses < 11:
             letter = input("Guess a letter: ")
             if letter.lower() in guessed:
                 print("Already guessed that letter!")
@@ -29,23 +29,21 @@ def hangman():
             guesses += 1
             guessed.append(letter.lower())
             print("".join(display))
-        if display == answer:
-            print("You got it!")
-            replay = input("Play again? Y/N ")
-            if replay == "Y":
-                hangman()
-            else:
+            if display == answer:
                 gameplay = False
-                break
+                print("You got it!")
+                replay = input("Play again? Y/N ")
+                if replay == "Y":
+                    hangman()
+                else:
+                    break
+        result = "".join(answer)
+        print("Too bad! The word was '" + str(result) + "'!")
+        replay = input("Play again? Y/N ")
+        if replay == "Y":
+            hangman()
         else:
-            result = "".join(answer)
-            print("Too bad! The word was '" + str(result) + "'!")
-            replay = input("Play again? Y/N ")
-            if replay == "Y":
-                hangman()
-            else:
-                gameplay = False
-                break
+            break
 
 
 
