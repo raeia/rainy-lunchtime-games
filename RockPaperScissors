@@ -1,6 +1,7 @@
 import random
 
 fighters = ["rock", "paper", "scissors"]
+
 def rock_paper_scissors():
     gameplay = True
     replay = ""
