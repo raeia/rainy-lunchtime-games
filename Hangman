@@ -1,13 +1,69 @@
 import random
 words = ["reliable", "creative", "friendly", "adaptable", "punctual", "success", "efficient", "smart", "diligent"]
 
+def draw_hangman(num):
+    drawing = {
+        0: "__|__",
+        1: "  |\n"
+           "  |\n"
+           "__|__",
+        2: "  |\n"
+           "  |\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        3: "  |‾/‾‾‾\n"
+           "  |/\n"
+           "  |\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        4: "  |‾/‾‾‾|\n"
+           "  |/\n"
+           "  |\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        5: "  |‾/‾‾‾|\n"
+           "  |/    O\n"
+           "  |\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        6: "  |‾/‾‾‾|\n"
+           "  |/    O\n"
+           "  |     |\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        7: "  |‾/‾‾‾|\n"
+           "  |/    O\n"
+           "  |    /|\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        8: "  |‾/‾‾‾|\n"
+           "  |/    O\n"
+           "  |    /|\\\n"
+           "  |\n"
+           "  |\n"
+           "__|__",
+        9: "  |‾/‾‾‾|\n"
+           "  |/    O\n"
+           "  |    /|\\\n"
+           "  |    /\n"
+           "  |\n"
+           "__|__",
+        10: "  |‾/‾‾‾|\n"
+            "  |/    O\n"
+            "  |    /|\\\n"
+            "  |    /\\\n"
+            "  |\n"
+            "__|__ YOU LOSE",
+        }
+    print(drawing[num])
+
 def hangman():
-    print("  |‾/‾‾‾|\n"
-          "  |/    O\n"
-          "  |    /|\\\n"
-          "  |    /\\\n"
-          "  |\n"
-          "__|__")
     guesses = 0
     gameplay = True
     answer = list(words[random.randint(0, len(words))])
@@ -26,6 +82,7 @@ def hangman():
                 for i in range(0, word_length):
                     if letter.lower() == answer[i]:
                         display[i] = letter.lower()
+            draw_hangman(guesses)
             guesses += 1
             guessed.append(letter.lower())
             print("".join(display))
